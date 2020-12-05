@@ -37,7 +37,6 @@ class IdeasController < ApplicationController
 
     def update
         @idea = Idea.find params[:id]
-        
         if @idea.update params.require(:idea).permit(:title, :body)
             @idea.save
             redirect_to idea_path(@idea)
