@@ -1,0 +1,8 @@
+<br>
+<br>
+<h1><%= @idea.title %></h1>
+
+<p><%= @idea.body %></p>
+<small>
+<p>Posted <%= time_ago_in_words(@idea.created_at) %> ago</p>
+</small> 
