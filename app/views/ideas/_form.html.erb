@@ -2,23 +2,25 @@
 
 <%= form_for @idea do |f|%>
 
-    <div id = 'form'>
+    <div class="form-group">
     <div>
        <h2> <%= f.label :title%></h2>
-        <%= f.text_field :title, size: "40x4"%>
+        <%= f.text_field :title, size: "40x4", class: "form-control"%>
     </div>
     <br>
-    <div >
+    <div class="form-group">
        <h2> <%= f.label :body%></h2>
         <%= f.text_area(
         :body,
         cols: 50,
         rows: 5,
-        placeholder: "write post here")%>
+        placeholder: "write post here")
+        
+        %>
     
     </div>
     <br>
-    <%= f.submit "Create Idea" %>
+    <%= f.submit "Create Idea", class: "btn btn-primary"%>
     </div>
 
 <% end %>

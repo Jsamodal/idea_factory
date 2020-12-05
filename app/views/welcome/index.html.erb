@@ -1,11 +1,20 @@
-<h1>Welome to Idea Factory!</h1>
 
-<h1> Idea Factory </h1>
+<div class="title-container">
+<h1> Ideas</h1>
 
-<% @idea.each do |idea|%>
--------------------------------------------------------------------------------------------------------
-    <div>
-        <h2><%= link_to idea.title, idea_path(idea)%></h2>
-        <p><%= idea.body%></p>
-    </div>
-<% end %>
+ <%= link_to 'New Post', '/ideas/new' %>
+</div>
+
+
+</div class="ideas">
+    <% @idea.each do |idea|%>
+       <div class="line">
+         
+            <div>
+                <h3><%= link_to idea.title, idea_path(idea)%></h3>
+                <p><%= idea.body%></p>
+            </div>
+         
+        </div>
+    <% end %>
+</div>
