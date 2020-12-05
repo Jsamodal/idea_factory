@@ -1,2 +1,24 @@
-<h1> edit ideas</h1>
-<%= render "form" %>
+<h1> Edit Ideas</h1>
+
+<%= form_for @idea do |f|%>
+
+    <div id = 'form'>
+    <div>
+       <h2> <%= f.label :title%></h2>
+        <%= f.text_field :title, size: "40x4"%>
+    </div>
+    <br>
+    <div >
+       <h2> <%= f.label :body%></h2>
+        <%= f.text_area(
+        :body,
+        cols: 50,
+        rows: 5,
+        placeholder: "write post here")%>
+    
+    </div>
+    <br>
+    <%= f.submit "Edit Idea" %>
+    </div>
+
+<% end %>

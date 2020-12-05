@@ -34,9 +34,9 @@ class IdeasController < ApplicationController
     def update
         @idea = Idea.find params[:id]
         
-        if @idea.update params.require(:blog).permit(:title, :body)
+        if @idea.update params.require(:idea).permit(:title, :body)
             @idea.save
-            redirect_to blog_path(@idea)
+            redirect_to idea_path(@idea)
         else
             render :edit    
         end
