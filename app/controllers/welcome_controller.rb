@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
     def index
-        render
+        @idea = Idea.all
     end
 end
