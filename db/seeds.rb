@@ -21,4 +21,17 @@ Idea.destroy_all
        
 end
 
+
+
 idea =Idea.all
+
+Review.destroy_all
+idea.each do |q|
+    5.times do
+        Review.create(
+            body: Faker::TvShows::SouthPark.quote,
+            idea_id: q.id
+        )
+    end
+end
+review =Review.all
