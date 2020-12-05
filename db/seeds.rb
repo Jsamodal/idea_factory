@@ -35,3 +35,11 @@ idea.each do |q|
     end
 end
 review =Review.all
+
+50.times do
+    User.create({
+      first_name: Faker::Games::SuperSmashBros.fighter,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email
+    })
+  end

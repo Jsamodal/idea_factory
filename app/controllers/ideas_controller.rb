@@ -1,4 +1,6 @@
 class IdeasController < ApplicationController
+    before_action :authenticate_user!, except: [:index, :show, ]
+    before_action :find_idea, only:[:destroy, :edit, :update, :show]
     def index
         @idea = Idea.all
     end
@@ -50,7 +52,10 @@ class IdeasController < ApplicationController
                @idea.destroy
                redirect_to root_path
     end
-
+    private
+    def find_idea
+        @idea = Idea.find params[:id]
+    end
    
 end   
 
