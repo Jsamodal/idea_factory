@@ -16,7 +16,7 @@ class IdeasController < ApplicationController
         @idea = Idea.new params.require(:idea).permit(:title, :body)
     
             if @idea.save
-                flash[:notice] = "Blog created successfully"
+                flash[:notice] = "idea created successfully"
                 redirect_to idea_path(@idea)
             else
                 render :new

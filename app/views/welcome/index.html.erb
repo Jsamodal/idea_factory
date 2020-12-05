@@ -5,7 +5,6 @@
  <%= link_to 'New Post', '/ideas/new' %>
 </div>
 
-
 </div class="ideas">
     <% @idea.each do |idea|%>
        <div class="line">
@@ -14,7 +13,27 @@
                 <h3><%= link_to idea.title, idea_path(idea)%></h3>
                 <p><%= idea.body%></p>
             </div>
-         
+        <div>
+            <%if user_signed_in? %>
+               <% if @like.present? %>
+                    <%= link_to( 
+                            "Like", 
+                        idea_like_path(@idea, @like),
+                    method: :delete
+                    )   
+                %> <%else%>   <%=link_to( 
+                    "un-like", 
+                    idea_likes_path(@idea),
+                    method: :post
+                        )
+                %>
+                <%end%>
+                
+            <%end%>
+        </div>
+        <div>
+        Likes: <%=idea.likes&.count%>
+        </div>
         </div>
     <% end %>
 </div>
