@@ -15,6 +15,7 @@ super_user = User.create(
     last_name: 'Snow',
     email:"jonsnow@jo.gov",
     password: 'qweqwe',
+    is_admin: true
 
 )
 

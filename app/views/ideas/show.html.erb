@@ -6,13 +6,14 @@
 <small>
 <p>Posted <%= time_ago_in_words(@idea.created_at) %> ago</p>
 </small>
-
+<% if can?(:crud, @idea)%>
     <%= link_to "Delete", idea_path(@idea), 
     method: :delete, 
     data: {confirm: "Are you sure you want to delete this idea?"}
     %>
     |
     <%= link_to "Edit", edit_idea_path(@idea)%>
+<%end%>
 
 <h2>Review:</h2>
 
@@ -37,15 +38,17 @@
         <%= a.body%>
     <br>
     <small>
-            <%= link_to(
-                "Delete", 
-                idea_review_path(@idea, a),
-                method: :delete,
-                data: {
-                confirm: "are you sure you want to delete this review?"
-                }
+           <% if can?(:crud, a)%>
+        <%= link_to(
+            "Delete", 
+            idea_review_path(@idea, a),
+            method: :delete,
+            data: {
+            confirm: "are you sure you want to delete this answer?"
+        }
   
-            )%>
+    )%>
+     <% end %>
         <br>
     
         Reviewed <%=time_ago_in_words(a.created_at)%> ago

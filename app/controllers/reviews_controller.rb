@@ -15,10 +15,11 @@ class ReviewsController < ApplicationController
     
     def destroy
         @review= Review.find params[:id]
-        
-       
-        @comment.destroy
-        redirect_to idea_path(@review.blog)
-       
+        if can?(:crud,@review)
+            @review.destroy
+            redirect_to idea_path(@review.idea)
+            else
+                head :unauthorized
+            end
     end   
 end

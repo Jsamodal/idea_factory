@@ -7,6 +7,5 @@
     <div>
         <h2><%= link_to idea.title, idea_path(idea)%></h2>
         <p><%= idea.body%></p>
-        <%= @idea.user&.full_name%>
     </div>
 <% end %>

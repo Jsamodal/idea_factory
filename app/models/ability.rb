@@ -30,5 +30,25 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    can(:crud, Idea) do |idea|
+      user==idea.user
+     
+    end
+  
+    can(:crud, Review )do |review|
+      user==review.user
+    end
+    
+    user ||= User.new
+    
+    if user.is_admin?
+      can :manage,:all
+    end
+    
+
+
+    alias_action(:Create, :read, :update, :delete, to: :crud)
+  
+  
   end
 end
