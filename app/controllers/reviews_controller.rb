@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
         @idea = Idea.find params[:idea_id]
         @review =Review.new params.require(:review).permit(:body)
         @review.idea = @idea
+       
         if @review.save
             redirect_to idea_path(@idea)
         else

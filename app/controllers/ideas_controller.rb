@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
     def create
        
         @idea = Idea.new params.require(:idea).permit(:title, :body)
-            @idea.user = current_user
+    
             if @idea.save
                 flash[:notice] = "Blog created successfully"
                 redirect_to idea_path(@idea)
