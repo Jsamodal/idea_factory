@@ -2,19 +2,22 @@ class LikesController < ApplicationController
     def create
         idea = Idea.find params[:idea_id]
         like = Like.new(idea: idea, user: current_user)
-
-        if like.save
-            flash[:success] = "Question liked"
+            if(!can?(:like, idea))
+                if like.save
+                    flash[:success] = "Question liked"
              
-        else
-            flash[:danger] =like.errors.full_messages.join(", ")
-        end
-        redirect_to idea_path(idea)
+                else
+                    flash[:danger] =like.errors.full_messages.join(", ")
+                end
+                    redirect_to root_path(idea)
+            end
     end
     def destroy
-        like = like.find_by(idea: params[idea: idea_id], user: current_user)
-        like.destroy
-       redirect_to idea_path(like.idea)
+        if !(can?(:destroy, like))
+            like = current_user.likes.find params[:id]
+            like.destroy
+            redirect_to idea_path(like.idea)
+        end
     end
 
 end

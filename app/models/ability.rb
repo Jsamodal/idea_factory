@@ -34,6 +34,11 @@ class Ability
       user==idea.user
      
     end
+
+    can(:destroy, Like) do |like|
+      user==like.user
+    
+    end
   
     can(:crud, Review )do |review|
       user==review.user

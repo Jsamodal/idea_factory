@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
         @idea = Idea.find params[:idea_id]
         @review =Review.new params.require(:review).permit(:body)
         @review.idea = @idea
-       
+        @review.user = current_user
         if @review.save
             redirect_to idea_path(@idea)
         else
@@ -22,5 +22,6 @@ class ReviewsController < ApplicationController
             else
                 head :unauthorized
             end
-    end   
+    end
+
 end

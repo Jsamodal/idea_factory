@@ -6,6 +6,7 @@
 <small>
 <p>Posted <%= time_ago_in_words(@idea.created_at) %> ago</p>
 </small>
+
 <% if can?(:crud, @idea)%>
     <%= link_to "Delete", idea_path(@idea), 
     method: :delete, 
